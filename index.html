@@ -261,9 +261,10 @@
 
       var head = { x: snake[0].x + dx, y: snake[0].y + dy };
 
-      if (head.x < 0 || head.x >= TILE_COUNT || head.y < 0 || head.y >= TILE_COUNT) {
-        return gameOver();
-      }
+      if (head.x < 0) head.x = TILE_COUNT - 1;
+      if (head.x >= TILE_COUNT) head.x = 0;
+      if (head.y < 0) head.y = TILE_COUNT - 1;
+      if (head.y >= TILE_COUNT) head.y = 0;
 
       for (var i = 0; i < snake.length; i++) {
         if (snake[i].x === head.x && snake[i].y === head.y) {
